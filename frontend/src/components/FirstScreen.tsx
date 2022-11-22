@@ -1,6 +1,5 @@
 import React from 'react'
 import "./FirstScreen.css"
-
 import Paper from '@mui/material/Paper'
 import { Carousel } from 'react-responsive-carousel';
 import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader

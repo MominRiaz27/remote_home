@@ -1,7 +1,6 @@
 import {  Grid } from '@mui/material'
 import React from 'react'
 
-
 //import Paper from '@mui/material/Paper';
 import Box from '@mui/material/Box';
 
@@ -13,10 +12,8 @@ import AffiliatedHotels from '../components/AffiliatedHotels';
 import NavBar from '../components/NavBar';
 
 
-
 const Home = () => {
     
-
     return (
         <>
             <Grid container maxWidth="md" marginX='auto'>

@@ -1,6 +1,6 @@
 import React from 'react'
 import TextField from '@mui/material/TextField';
-import { Dayjs } from 'dayjs';
+//import { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
@@ -8,8 +8,10 @@ import { Button } from '@mui/material'
 import {Stack} from '@mui/material';
 
 const SearchBar = () => {
-    const [checkinvalue, setcheckinValue] = React.useState<Dayjs | null>(null);
-    const [checkoutvalue, setcheckoutValue] = React.useState<Dayjs | null>(null);
+    const [checkinvalue, setcheckinValue] = React.useState<Date | null>(new Date());
+    const [checkoutvalue, setcheckoutValue] = React.useState<Date | null>(new Date());
+
+    
   return (
     <div>
       <Stack direction='row' justifyContent='center' 
@@ -19,7 +21,7 @@ const SearchBar = () => {
              backgroundColor:'white',
              padding:2,
              border: "3px solid #dca73a",
-             borderRadius:3
+             borderRadius:3,
              
              }}>
             <TextField id="outlined-search" label="Enter Destination" type="search" 
@@ -31,6 +33,7 @@ const SearchBar = () => {
             />
             <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
+                    minDate={new Date()}
                     label="Check-in"
                     value={checkinvalue}
                     onChange={(newValue) => {
@@ -42,6 +45,7 @@ const SearchBar = () => {
 
                 <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DatePicker
+                    minDate={checkinvalue}
                     label="Check-out"
                     value={checkoutvalue}
                     onChange={(newValue) => {
