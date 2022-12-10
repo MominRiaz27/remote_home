@@ -12,6 +12,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useState, useContext } from 'react';
+import { AuthContext } from '../../context/authContext';
+import axios  from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright() {
   return (
@@ -29,14 +33,41 @@ function Copyright() {
 const theme = createTheme();
 
 export default function SignIn() {
-  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+
+  const [credentials, setCredentials] = useState({
+    username:undefined,
+    password:undefined
+  })
+  const {loading ,error ,dispatch} = useContext(AuthContext)
+  //const {user, loading ,error ,dispatch} = useContext(AuthContext)
+  const navigate = useNavigate();
+
+  const handelChange = (e:React.ChangeEvent<HTMLInputElement>)=>{
+    
+    setCredentials((prev)=>({...prev, [e.target.id]: e.target.value })) 
+  }
+
+  const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
+    
+    const userData = {
+      username: data.get('username'),
       password: data.get('password'),
-    });
+    };
+    dispatch({type:"LOGIN_START"})
+    console.log(credentials)
+    try {
+      const res = await axios.post("/auth/login", credentials);
+      dispatch({type:"LOGIN_SUCCESS", payload: res.data});
+      navigate("/")
+    } catch (error:any) {
+      console.log("inside login failure", error);
+      dispatch({type:"LOGIN_FAILURE", payload:error.response.data})
+    }
+    
   };
+  //console.log(user);
 
   return (
     <ThemeProvider theme={theme}>
@@ -61,11 +92,12 @@ export default function SignIn() {
               margin="normal"
               required
               fullWidth
-              id="email"
-              label="Email Address"
-              name="email"
-              autoComplete="email"
+              id="username"
+              label="username"
+              name="username"
+              autoComplete="username"
               autoFocus
+              onChange={handelChange}
             />
             <TextField
               margin="normal"
@@ -76,19 +108,21 @@ export default function SignIn() {
               type="password"
               id="password"
               autoComplete="current-password"
+              onChange={handelChange}
             />
             <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
             />
-            <Button
+            {loading ? "" : <Button
               type="submit"
               fullWidth
               variant="contained"
               sx={{ mt: 3, mb: 2 }}
             >
               Sign In
-            </Button>
+            </Button>}
+            {error && <span>{error.message} </span>}
             <Grid container>
               <Grid item xs>
                 <Link href="#" variant="body2">

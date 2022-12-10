@@ -1,0 +1,7 @@
+.imgClass{
+    transition: transform .2s;
+overflow: hidden;
+}
+.imgClass:hover {
+    transform: scale(1.5); 
+}

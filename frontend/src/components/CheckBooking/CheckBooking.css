@@ -1,0 +1,38 @@
+.main{
+    background-color:black ;
+    color:white;
+    width:'100%';
+}
+.secondmain{
+    width: '100%';
+}
+.heading{
+    background-color: #ffc501;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 200%;
+}
+.customers{
+    background-color: black;
+    color: #ffc501;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    width: 213%;
+    margin-left: 44px;
+}
+.item{
+    padding-left: 1;
+}
+.button{
+    height: 50px;
+    width: 150px;
+    color: white;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    margin: 0;
+}
