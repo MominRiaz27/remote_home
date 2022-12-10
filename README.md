@@ -20,7 +20,11 @@ RemoteHome is a Hotel booking Application
 # How to Use the Project
 - Status: 
 > This project is complete with basic features as shown below in video. you can install and use it and add extra features if you want.
-## Screenshots
+## Working Video
+
+
+https://user-images.githubusercontent.com/93713996/206835936-4222f9ce-c9ee-4fdd-88c7-bc1499af4776.mp4
+
 
 
 
