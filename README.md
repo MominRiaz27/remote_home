@@ -3,14 +3,15 @@ RemoteHome is a Hotel booking Application
 > Project Title
 # remote_home
 # Project Description
-> Remote home is the hotels rooms booking application developed in React, Typescript and javascript in client side and in the backend it uses express, node mongoose and mongodb as a database.
+> Remote home is the hotels rooms booking application developed in React, Typescript and javascript in client side and in the backend it uses express, node mongoose and mongodb as a database. material UI and html, CSS is used for styling.
 # Technologies
 
 - Typescript
-- REact
+- React
 - Node Js
 - MongoDB
 - Express
+- MUI
 
 # How to Install and Run the Project
 - git clone https://github.com/MominRiaz27/remote_home.git
